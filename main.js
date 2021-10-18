@@ -31,8 +31,12 @@ formElm.addEventListener('submit', e => {
     e.preventDefault()
 
     if(inputValue === '' || inputValue < 1 ){
+        
         if(!document.querySelector('.inval-input')){
             formElm.insertAdjacentHTML('beforebegin','<p class = "inval-input"> Please enter valid number</p>')
+            p1BtnElm.setAttribute('disabled', 'disabled')
+            p2BtnElm.setAttribute('disabled', 'disabled')
+            //inputElm.value = ''
         }
     }else {
         if(document.querySelector('.inval-input')){
@@ -42,10 +46,13 @@ formElm.addEventListener('submit', e => {
     winingScoreElm.innerHTML =  ` Player who will score <b>${winScore}</b> first, will win the game.`
     inputElm.value = ''
     initStage()
-    }
+    submitBtnElm.setAttribute('disabled', 'disabled')
     p1BtnElm.removeAttribute('disabled')
     p2BtnElm.removeAttribute('disabled')
-    submitBtnElm.setAttribute('disabled', 'disabled')
+    }
+    
+    inputElm.value = ''
+
 })
 
 p1BtnElm.addEventListener('click', e => {
